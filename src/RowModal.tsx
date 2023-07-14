@@ -24,9 +24,6 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     width: "300px",
-    display: "flex",
-    flexDirection: "column",
-    backgroundColor: "yellow",
   },
 };
 
@@ -49,7 +46,21 @@ const RowModal: React.FC<Props> = ({
 }) => {
   if (!rowData) return null;
 
-  const { staffName, staffId, staffReporting, startDate, endDate } = rowData;
+  const {
+    advisorName,
+    advisorId,
+    staffName,
+    staffId,
+    staffReporting,
+    startDate,
+    endDate,
+  } = rowData;
+
+  const handleCancel = () => {
+    onClose();
+    onStartDateChange("");
+    onEndDateChange("");
+  };
 
   return (
     <Modal
@@ -60,35 +71,89 @@ const RowModal: React.FC<Props> = ({
     >
       <div>
         <h2>Edit Dates</h2>
-        <div>
+        <hr />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <label>Advisor Name:</label>
+          <span>{advisorName}</span>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
+          <label>Advisor Name:</label>
+          <span>{advisorId}</span>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
           <label>Staff Name:</label>
           <span>{staffName}</span>
         </div>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
           <label>Staff ID:</label>
           <span>{staffId}</span>
         </div>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
           <label>Staff Reporting:</label>
           <span>{staffReporting}</span>
         </div>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
           <label>Start Date:</label>
           <input
-            type="text"
+            type="date"
             value={startDate}
             onChange={(e) => onStartDateChange(e.target.value)}
           />
         </div>
-        <div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
+        >
           <label>End Date:</label>
           <input
-            type="text"
+            type="date"
             value={endDate}
             onChange={(e) => onEndDateChange(e.target.value)}
           />
         </div>
-        <button onClick={onUpdate}>Update</button>
+        <div style={{ textAlign: "right" }}>
+          <button onClick={onUpdate}>Save</button>
+          <button onClick={handleCancel}>Cancel</button>
+        </div>
       </div>
     </Modal>
   );

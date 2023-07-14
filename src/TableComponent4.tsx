@@ -29,12 +29,10 @@ const customStyles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     width: "300px",
-    display: "flex",
-    flexDirection: "column",
   },
 };
 
-const TableComponent: React.FC<Props> = ({ advisors }) => {
+const TableComponent4: React.FC<Props> = ({ advisors }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedRow, setSelectedRow] = useState<
     (Advisor & Participant) | null
@@ -197,4 +195,4 @@ const TableComponent: React.FC<Props> = ({ advisors }) => {
   );
 };
 
-export default TableComponent;
+export default TableComponent4;
